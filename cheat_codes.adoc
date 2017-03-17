@@ -1,0 +1,7 @@
+Read in lines 147-227 of *foo.c*:
+
+`:r! sed -n 147,227p /path/to/foo/foo.c`
+
+Replace until the next occurance of `x`:
+
+`ctx`
