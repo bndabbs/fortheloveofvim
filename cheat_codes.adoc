@@ -15,3 +15,20 @@ ciw'Ctrl+r"'
 * `'` - add the first quote.
 * `Ctrl+r"` - Insert the contents of the " register, aka the last yank/delete.
 * `'` - add the closing quote. 
+
+== Rename a file w/o leaving vim
+
+Credit: http://aokolish.me/blog/2014/11/05/rename-a-file-without-leaving-vim/
+
+```
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>r :call RenameFile()<cr>
+```
